@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seva Pakistan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="hero">
+      <nav class="topbar">
+        <div class="brand">
+          <span class="brand-mark">SP</span>
+          <div>
+            <p>Seva Pakistan</p>
+            <span>Trusted local services</span>
+          </div>
+        </div>
+        <a class="topbar-link" href="#providers">Explore providers</a>
+      </nav>
+
+      <section class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Pakistan Service Marketplace</p>
+          <h1>Hire reliable painters, plumbers, electricians and more with confidence.</h1>
+          <p class="hero-text">
+            Compare prices, read real reviews, shortlist professionals, and book the right expert for home, car, and maintenance work across Pakistan.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#providers">Find a service</a>
+            <button class="button secondary" id="featuredButton" type="button">View top rated</button>
+          </div>
+          <ul class="hero-points">
+            <li>Verified ratings and review counts</li>
+            <li>Transparent starting prices in PKR</li>
+            <li>Fast hire request form</li>
+          </ul>
+        </div>
+
+        <aside class="hero-panel">
+          <div class="panel-card highlight">
+            <span>Today's Best Match</span>
+            <strong id="bestMatchName">Loading...</strong>
+            <p id="bestMatchMeta">Finding the highest-rated provider</p>
+          </div>
+          <div class="panel-stats">
+            <div class="stat-card">
+              <strong id="providerCount">0</strong>
+              <span>Active providers</span>
+            </div>
+            <div class="stat-card">
+              <strong>7</strong>
+              <span>Service categories</span>
+            </div>
+            <div class="stat-card">
+              <strong>4.8+</strong>
+              <span>Top average rating</span>
+            </div>
+          </div>
+        </aside>
+      </section>
+    </header>
+
+    <main>
+      <section class="categories" id="categories"></section>
+
+      <section class="marketplace" id="providers">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Browse Professionals</p>
+            <h2>Choose the best service provider for your budget and urgency.</h2>
+          </div>
+          <p class="section-copy">
+            Filter by category, city, and sorting preference to find the right match quickly.
+          </p>
+        </div>
+
+        <div class="controls">
+          <label class="control">
+            <span>Search</span>
+            <input id="searchInput" type="search" placeholder="Search by service, city, or name">
+          </label>
+          <label class="control">
+            <span>Category</span>
+            <select id="categoryFilter"></select>
+          </label>
+          <label class="control">
+            <span>Sort by</span>
+            <select id="sortFilter">
+              <option value="rating">Highest rating</option>
+              <option value="priceLow">Lowest price</option>
+              <option value="priceHigh">Highest price</option>
+              <option value="reviews">Most reviews</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="results-head">
+          <p id="resultsSummary">Loading providers...</p>
+        </div>
+
+        <section class="provider-grid" id="providerGrid"></section>
+      </section>
+    </main>
+  </div>
+
+  <dialog class="profile-modal" id="profileModal">
+    <form method="dialog" class="modal-card">
+      <button class="modal-close" type="submit" aria-label="Close profile">x</button>
+      <div id="modalBody"></div>
+    </form>
+  </dialog>
+
+  <dialog class="hire-modal" id="hireModal">
+    <form class="modal-card hire-form" id="hireForm">
+      <button class="modal-close" type="button" id="hireClose" aria-label="Close hire form">x</button>
+      <h3>Hire Request</h3>
+      <p id="hireTarget">You are booking a provider.</p>
+
+      <label>
+        <span>Your name</span>
+        <input type="text" id="customerName" required placeholder="Enter your name">
+      </label>
+      <label>
+        <span>Phone number</span>
+        <input type="tel" id="customerPhone" required placeholder="03XX-XXXXXXX">
+      </label>
+      <label>
+        <span>City / Area</span>
+        <input type="text" id="customerArea" required placeholder="Lahore, Johar Town">
+      </label>
+      <label>
+        <span>Job details</span>
+        <textarea id="customerJob" rows="4" required placeholder="Describe the work you need"></textarea>
+      </label>
+
+      <button class="button primary full" type="submit">Send hire request</button>
+      <p class="hire-note" id="hireNote"></p>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
