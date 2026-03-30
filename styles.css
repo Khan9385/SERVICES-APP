@@ -213,8 +213,21 @@ body::before {
   color: #8a4a04;
 }
 
+.button.whatsapp {
+  color: #fff;
+  background: linear-gradient(135deg, #1f9d55, #137a41);
+  box-shadow: 0 18px 34px rgba(19, 122, 65, 0.2);
+}
+
 .button.full {
   width: 100%;
+}
+
+.action-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }
 
 .hero-points {
@@ -425,6 +438,7 @@ body::before {
 
 .card-actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
 }
 

@@ -4,6 +4,7 @@ const providers = [
     name: "Ali Raza Paint Works",
     category: "Painter",
     city: "Lahore",
+    phone: "+923001112233",
     rating: 4.9,
     reviews: 128,
     price: 12000,
@@ -22,6 +23,7 @@ const providers = [
     name: "Sajid Plumbing Solutions",
     category: "Plumber",
     city: "Karachi",
+    phone: "+923021234567",
     rating: 4.8,
     reviews: 214,
     price: 2500,
@@ -40,6 +42,7 @@ const providers = [
     name: "CurrentFix Electricians",
     category: "Electrician",
     city: "Islamabad",
+    phone: "+923331117788",
     rating: 4.9,
     reviews: 176,
     price: 3000,
@@ -58,6 +61,7 @@ const providers = [
     name: "Rehman Wood Craft",
     category: "Carpenter",
     city: "Rawalpindi",
+    phone: "+923155558899",
     rating: 4.7,
     reviews: 96,
     price: 7000,
@@ -76,6 +80,7 @@ const providers = [
     name: "CleanNest Home Services",
     category: "House Cleaner",
     city: "Lahore",
+    phone: "+923041212121",
     rating: 4.8,
     reviews: 242,
     price: 4500,
@@ -94,6 +99,7 @@ const providers = [
     name: "ShineX Car Care",
     category: "Car Cleaner",
     city: "Karachi",
+    phone: "+923451010101",
     rating: 4.6,
     reviews: 88,
     price: 1800,
@@ -112,6 +118,7 @@ const providers = [
     name: "MotorMedics PK",
     category: "Mechanic",
     city: "Faisalabad",
+    phone: "+923221234000",
     rating: 4.9,
     reviews: 154,
     price: 3500,
@@ -130,6 +137,7 @@ const providers = [
     name: "Ustad Aslam Electrical",
     category: "Electrician",
     city: "Peshawar",
+    phone: "+923139998877",
     rating: 4.7,
     reviews: 121,
     price: 2200,
@@ -186,6 +194,20 @@ function formatCurrency(value) {
     currency: "PKR",
     maximumFractionDigits: 0
   }).format(value);
+}
+
+function formatDisplayPhone(value) {
+  return value.replace("+92", "0");
+}
+
+function getWhatsAppLink(provider) {
+  const number = provider.phone.replace("+", "");
+  const message = encodeURIComponent(`Assalam-o-Alaikum ${provider.name}, I want to hire you for ${provider.category} service in ${provider.city}.`);
+  return `https://wa.me/${number}?text=${message}`;
+}
+
+function getCallLink(provider) {
+  return `tel:${provider.phone}`;
 }
 
 function getSortedProviders(list) {
@@ -262,6 +284,11 @@ function renderProfile(provider) {
         </div>
       </div>
 
+      <div class="meta-box">
+        <strong>${formatDisplayPhone(provider.phone)}</strong>
+        <span>Direct contact</span>
+      </div>
+
       <div class="profile-highlights">
         ${provider.specialties.map((item) => `<span>${item}</span>`).join("")}
       </div>
@@ -273,6 +300,11 @@ function renderProfile(provider) {
             <p>${review.text}</p>
           </article>
         `).join("")}
+      </div>
+
+      <div class="card-actions">
+        <a class="button secondary action-link" href="${getCallLink(provider)}">Call now</a>
+        <a class="button whatsapp action-link" href="${getWhatsAppLink(provider)}" target="_blank" rel="noreferrer">WhatsApp</a>
       </div>
 
       <button class="button primary" type="button" onclick="openHire(${provider.id})">Hire ${provider.name}</button>
@@ -324,11 +356,18 @@ function renderProviders() {
         </div>
       </section>
 
+      <div class="meta-box">
+        <strong>${formatDisplayPhone(provider.phone)}</strong>
+        <span>Call or WhatsApp</span>
+      </div>
+
       <div class="provider-tags">
         ${provider.specialties.map((item) => `<span>${item}</span>`).join("")}
       </div>
 
       <div class="card-actions">
+        <a class="button secondary action-link" href="${getCallLink(provider)}">Call now</a>
+        <a class="button whatsapp action-link" href="${getWhatsAppLink(provider)}" target="_blank" rel="noreferrer">WhatsApp</a>
         <button class="button secondary" type="button" onclick="openProfile(${provider.id})">View profile</button>
         <button class="button primary" type="button" onclick="openHire(${provider.id})">Hire now</button>
       </div>
